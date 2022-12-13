@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MangerTitle</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap');
+
+        a {
+            color: inherit;
+        }
+
+        li:hover {
+            background-color: rgb(57, 197, 106);
+        }
+
+        button:hover {
+            color: blue;
+        }
+
+        .btn-warning {
+            font-family: 'Rubik Vinyl';
+        }
+
+        body {
+            font-family: 'La Belle Aurore';
+        }
+
+        #openh1,
+        #closeh1 {
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div style="display: flex;justify-content: center;align-items: center; flex-direction: column; width: 100%;"
+            class="alert alert-secondary text-center" role="alert">
+            <h1 class="display-3 text-center text-primary">
+                <i class="fa-solid fa-list-check"></i></i>MY TASK
+            </h1>
+            <div style="display: flex;flex-direction: row;width: 100%; align-items: center;justify-content: center;">
+
+                <input type="text" class="form-control" style="width: 50%" placeholder="Enter new Task" id="task"
+                    aria-label="task" aria-describedby="basic-addon1" onkeypress="checkEnter(event)">
+                <button class="btn btn-warning" onclick="addNewAction()" type="button">+</button>
+
+            </div>
+        </div>
+
+        <div class="container text-center">
+            <div class="container-fluid">
+                <div class="row">
+                    <h1 class="text-success " id="openh1">open task</h1>
+                    <ul class="list-group" id="open">
+                    </ul>
+                </div>
+                <div class="row">
+                    <h1 class="text-danger " id="closeh1">closed task</h1>
+                    <ul id="close" class="list-group">
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="./script.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
