@@ -13,7 +13,6 @@ export default class TaskManager {
                 break;
             }
         }
-        this.taskArr.sort((item, item2) => item.priorityNum - item2.priorityNum);
     }
 
     updateTaskDescription(id, description) {

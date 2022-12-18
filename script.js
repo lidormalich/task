@@ -63,11 +63,20 @@ window.deleteTask = function deleteTask(id) {
     // צריך לעדכן אותו בלבד במקום כל המערך- חסכון במאשבים וזמן ריצה
 }
 
+function sortArr() {
+    taskArrManger.taskArr.sort((item, item2) => {
+        // console.log(item.priority);
+        // console.log(item.missionPriorityNum);
+        return item.missionPriorityNum - item2.missionPriorityNum
+    });
+    // console.log(taskArrManger.taskArr);
+    // console.log("Sorted");
 
+}
 
 
 function updateUI() {
-
+    sortArr();
     document.getElementById('open').innerHTML = "";
     document.getElementById('close').innerHTML = "";
     document.getElementById('openh1').style.display = "none";
@@ -75,12 +84,29 @@ function updateUI() {
     taskArrManger.taskArr.map((item) => {
         if (!item.completed) {
             document.getElementById('openh1').style.display = "block";
+            let styleDiv = "text-success";
+            switch (item.missionPriorityNum) {
+                case 1:
+                    styleDiv = "text-primary"
+                    break;
+                case 2:
+                    styleDiv = "text-warning"
+                    break;
+                case 3:
+                    styleDiv = "text-success"
+                    break;
+
+                default:
+                    break;
+            }
             document.getElementById('open').innerHTML += `
             <li class="list-group-item" style='display:flex; gap:10px; justify-content: center;'>
-            <div style='width:15rem; word-break: break-all'>
-            ${item.description}</div>
-            <div style='width:15rem; word-break: break-all' class="text-warning">
+            
+            <div style='width:15rem; word-break: break-all ' class=" ${styleDiv} text-font-h1">
             ${item.priority}</div>
+            
+            <div style='width:15rem; word-break: break-all '>
+            ${item.description}</div>
                 <button class='btn btn-success'><i class="fa-solid fa-check" onclick='doComplite(${item.get("id")})'></i></button>
                 <button class='btn btn-primary'><i class="fa-regular fa-pen-to-square" onclick='updateAction(${item.get("id")})'></i></button>
                 <button class='btn btn-danger'><i class="fa-regular fa-trash-can " onclick='deleteTask(${item.get("id")})'></i></button>
