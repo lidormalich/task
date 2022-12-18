@@ -2,22 +2,18 @@ import TaskManager from "./script/missionManager.js";
 import Task from "./script/mission.js";
 
 let taskArrManger = new TaskManager();
-// console.log(JSON.parse(sessionStorage.getItem("Data")).taskArr);
-for (let item of JSON.parse(sessionStorage.getItem("Data")).taskArr) {
-    let a = new Task(item.description);
-    taskArrManger.addTask(a);
-    a.completed = item.completed;
+// add
+try {
+    for (let item of JSON.parse(sessionStorage.getItem("Data")).taskArr) {
+        let a = new Task(item.description);
+        taskArrManger.addTask(a);
+        a.completed = item.completed;
+    }
+} catch (error) {
+    console.log(error);
 }
 
-// taskArrManger.addTask(new Task("Task A"));
-// taskArrManger.addTask(new Task("Task B"));
-// taskArrManger.addTask(new Task("Task D"));
-// taskArrManger.addTask(new Task("Task E"));
-// taskArrManger.addTask(new Task("Task F"));
-
-
 window.addNewAction = function addNewAction() {
-
     let mission = document.getElementById('task').value;
     if (mission != "" && mission != null) {
         taskArrManger.addTask(new Task(mission));

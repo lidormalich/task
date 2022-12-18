@@ -16,6 +16,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300&display=swap');
 
         a {
             color: inherit;
@@ -37,6 +38,11 @@
             font-family: 'La Belle Aurore';
         }
 
+        input {
+            font-family: 'Fira Sans';
+            font-weight: 300;
+        }
+
         #openh1,
         #closeh1 {
             display: none;
@@ -56,7 +62,9 @@
 
                 <input type="text" class="form-control" style="width: 50%" placeholder="Enter new Task" id="task"
                     aria-label="task" aria-describedby="basic-addon1" onkeypress="checkEnter(event)">
-                <button class="btn btn-warning" onclick="addNewAction()" type="button">+</button>
+
+                <button class="btn btn-warning m-2" onclick="addNewAction()" type="button">+</button>
+
 
             </div>
         </div>
