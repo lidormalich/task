@@ -4,8 +4,8 @@ import Task from "./script/mission.js";
 let taskArrManger = new TaskManager();
 // add
 try {
-    for (let item of JSON.parse(sessionStorage.getItem("Data")).taskArr) {
-        let a = new Task(item.description);
+    for (let item of JSON.parse(localStorage.getItem("Data")).taskArr) {
+        let a = new Task(item.description, item.priority);
         taskArrManger.addTask(a);
         a.completed = item.completed;
     }
@@ -15,8 +15,9 @@ try {
 
 window.addNewAction = function addNewAction() {
     let mission = document.getElementById('task').value;
+    let missionPriority = document.getElementById('priority').value;
     if (mission != "" && mission != null) {
-        taskArrManger.addTask(new Task(mission));
+        taskArrManger.addTask(new Task(mission, missionPriority));
         // צריך לעדכן אותו בלבד במקום כל המערך- חסכון במאשבים וזמן ריצה
         updateUI();
         document.getElementById('task').value = "";
@@ -78,10 +79,12 @@ function updateUI() {
             <li class="list-group-item" style='display:flex; gap:10px; justify-content: center;'>
             <div style='width:15rem; word-break: break-all'>
             ${item.description}</div>
+            <div style='width:15rem; word-break: break-all' class="text-warning">
+            ${item.priority}</div>
                 <button class='btn btn-success'><i class="fa-solid fa-check" onclick='doComplite(${item.get("id")})'></i></button>
                 <button class='btn btn-primary'><i class="fa-regular fa-pen-to-square" onclick='updateAction(${item.get("id")})'></i></button>
                 <button class='btn btn-danger'><i class="fa-regular fa-trash-can " onclick='deleteTask(${item.get("id")})'></i></button>
-                <button class='btn btn-link'><a href= "https://wa.me/972526761204/?text="+${encodeURIComponent(taskArrManger.getTaskInfo(item.get("id")))} ><i class="fa-brands fa-whatsapp"></i></a ></button>
+                <button class='btn btn-link'><a target="_blank" href="https://wa.me/?text=+${encodeURIComponent(taskArrManger.getTaskInfo(item.get("id")))}" ><i class="fa-brands fa-whatsapp"></i></a ></button>
             </li>`;
         } else {
             document.getElementById('closeh1').style.display = "block";
@@ -95,6 +98,6 @@ function updateUI() {
             </li>`;
         }
     });
-    sessionStorage.setItem("Data", JSON.stringify(taskArrManger));
+    localStorage.setItem("Data", JSON.stringify(taskArrManger));
 }
 updateUI();

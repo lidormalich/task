@@ -4,6 +4,7 @@ export default class TaskManager {
     }
     addTask(newTask) {
         this.taskArr.push(newTask);
+
     }
     deleteTask(id) {
         for (let index in this.taskArr) {
@@ -12,6 +13,7 @@ export default class TaskManager {
                 break;
             }
         }
+        this.taskArr.sort((item, item2) => item.priorityNum - item2.priorityNum);
     }
 
     updateTaskDescription(id, description) {
@@ -21,6 +23,7 @@ export default class TaskManager {
             }
         }
     }
+
     getTaskInfo(id) {
         for (let index in this.taskArr) {
             if (this.taskArr[index].id == id) {
