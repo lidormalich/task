@@ -102,10 +102,10 @@ function updateUI() {
             document.getElementById('open').innerHTML += `
             <li class="list-group-item" style='display:flex; gap:10px; justify-content: center;'>
             
-            <div style='width:15rem; word-break: break-all ' class=" ${styleDiv} text-font-h1">
+            <div style='width:15rem; word-break: break-all ' class=" ${styleDiv} div2">
             ${item.priority}</div>
             
-            <div style='width:15rem; word-break: break-all '>
+            <div  style='width:15rem; word-break: break-all ' >
             ${item.description}</div>
                 <button class='btn btn-success'><i class="fa-solid fa-check" onclick='doComplite(${item.get("id")})'></i></button>
                 <button class='btn btn-primary'><i class="fa-regular fa-pen-to-square" onclick='updateAction(${item.get("id")})'></i></button>
